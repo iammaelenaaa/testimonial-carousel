@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testimonial Carousel</title>
+    <style>
+        /* Add your CSS here */
+        body {
+            font-family: Raleway, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f9f9f9;
+        }
+        .testimonial-container {
+            max-width: 600px;
+            text-align: center;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        .testimonial-item {
+            display: none;
+        }
+        .testimonial-item.active {
+            display: block;
+        }
+        .arrow {
+            cursor: pointer;
+            font-size: 20px;
+            margin: 10px;
+            background: none;
+            border: none;
+        }
+        .author {
+            font-size: 12px;
+            color: #134e92;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="testimonial-container">
+        <button class="arrow" id="prev" aria-label="Previous">&#8592;</button>
+        <div id="testimonial-content"><div id="testimonial-content">
+    <div class="testimonial-item active">
+        <p class="testimonial">
+            "I’ve had an amazing experience with the <em>Strong and Resilient</em> program! The community support is truly exceptional—everyone is so encouraging, and the weekly calls are packed with valuable, practical information that I can immediately apply. I’ve seen noticeable improvements in my sleep, emotional regulation, and physical strength. One of the biggest takeaways for me was learning that lifting more weight isn’t something to fear—it’s a sign of progress, and I’ve gained confidence in pushing myself further. The program’s structure is easy to follow, and I appreciate how the methods are backed by solid science, making it not just motivating but also informative. Plus, the support from the team is fantastic—they’re always available to answer questions and offer guidance. I highly recommend this program for anyone looking to build strength, resilience, and a deeper connection with their body and mind."
+        </p>
+        <p class="author">- Emily Davenport</p>
+    </div>
+    <div class="testimonial-item">
+        <p class="testimonial">
+            "I loved the breathing exercises in this course. The exercises were very successful in deregulating any tensions/negative stress that can be experienced during our daily routine. The exercises required a minimal daily time commitment. The exercises can be performed in either a supine and/or a seated position. The exercises require no equipment, can be performed any time of the day, and be performed in any environment (at work, at home, in bed, in the car). I highly recommend this course. I shall continue to perform these breathing exercises daily to help me deregulate negative stresses."
+        </p>
+        <p class="author">- David Caporale</p>
+    </div>
+    <div class="testimonial-item">
+        <p class="testimonial">
+            "Arianne has made everything much more streamlined and accessible. I have always struggled with doing things on my own and gravitate to workout videos that are not necessarily the moves or style of workout I should be doing. I thought I knew about nutrition but learned so much about protein during this course."
+        </p>
+        <p class="author">- Theresa Grygo</p>
+    </div>
+    <div class="testimonial-item">
+        <p class="testimonial">
+            "I feel like I’m starting a brand new journey that feels healthier than ever because I have so many more tools in my tool belt from this program, including the importance of balance and grace. The knowledge, support, and guidance Dr. Arianne so eloquently and selflessly shares at every level of expertise is absolutely priceless."
+        </p>
+        <p class="author">- Heidi Wise</p>
+    </div>
+    <div class="testimonial-item">
+        <p class="testimonial">
+            "Amazing experience, able to move and do things I haven’t done in years. You don’t realize how reconditioned you are until you start this program!"
+        </p>
+        <p class="author">- Paul Kazanjian</p>
+    </div>
+    <div class="testimonial-item">
+        <p class="testimonial">
+            "Easily one of the best investments I have ever made. Being more in touch with my nervous system and having groundwork to continue is priceless. I feel confident I can continue being more in tune with my body."
+        </p>
+        <p class="author">- Leigh Janiec</p>
+    </div>
+    <div class="testimonial-item">
+        <p class="testimonial">
+            "I absolutely love this practice group and their app! It’s an amazing holistic mind and body approach to healing and improving. A lot of great content and user-friendly. Nutrition, weights, movement, mindset, meditation, breath—it has it all! Videos are short and easy to follow along, as are the descriptions. The community is welcoming and uplifting. You get even more support and information from the group chats and challenges offered. Their approach to a healthier you is unlike anything else."
+        </p>
+        <p class="author">- Jennifer Rawding</p>
+    </div>
+    <div class="testimonial-item">
+        <p class="testimonial">
+            "The level of knowledge, instruction, support, and community offered during this challenge should be the gold standard for this type of challenge. My thoracic spine feels wonderful after completing the challenge (and I didn't know I had any issues there), my left hip had mild stiffness in it at times, and I'm not noticing it at all now, and the range of motion in both shoulders has improved."
+        </p>
+        <p class="author">- Catherine Smith</p>
+    </div>
+    <div class="testimonial-item">
+        <p class="testimonial">
+            "I can start by saying that I really like the 30-day challenge format. It's affordable if you're not a Movement Paradigm subscriber, and it's motivating. But this was by far for me the most engaging challenge so far. I have issues with my functional foot health, and I could really tell that they were going to get addressed here, perhaps in a way that wouldn't be likely anywhere else. And I was not disappointed. Everyone I've met who is in the 'barefoot' world talks about it 'being a journey,' and I'm finding that out. But my journey has started. With some Short Foot exercises. Five stars."
+        </p>
+        <p class="author">- Todd P.</p>
+    </div>
+    <div class="testimonial-item">
+        <p class="testimonial">
+            "I participated in the 30-Day Barefoot Challenge. I also participated in the Core Challenge earlier this year. I loved both of them. I feel like the Barefoot Challenge was the piece that completed it."
+        </p>
+        <p class="author">- Jodi Wooten</p>
+        </div>
+        <button class="arrow" id="next" aria-label="Next">&#8594;</button>
+    </div>
+    <script>
+        const testimonials = document.querySelectorAll('.testimonial-item');
+        const prevButton = document.getElementById('prev');
+        const nextButton = document.getElementById('next');
+        let currentIndex = 0;
+
+        function showTestimonial(index) {
+            testimonials.forEach((item, i) => {
+                item.classList.toggle('active', i === index);
+            });
+        }
+
+        prevButton.addEventListener('click', () => {
+            currentIndex = (currentIndex === 0) ? testimonials.length - 1 : currentIndex - 1;
+            showTestimonial(currentIndex);
+        });
+
+        nextButton.addEventListener('click', () => {
+            currentIndex = (currentIndex === testimonials.length - 1) ? 0 : currentIndex + 1;
+            showTestimonial(currentIndex);
+        });
+
+        showTestimonial(currentIndex);
+    </script>
+</body>
+</html>
